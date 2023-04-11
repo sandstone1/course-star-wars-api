@@ -36,7 +36,7 @@ import Person from './person.component';
 // create the fetchPeople function
 const fetchPeople = async (  ) => {
 
-    const response = await fetch( 'http://swapi.dev/api/people/' );
+    const response = await fetch( 'https://swapi.dev/api/people/' );
 
     const data = response.json();
 

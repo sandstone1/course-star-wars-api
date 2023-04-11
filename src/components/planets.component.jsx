@@ -546,7 +546,7 @@ import Planet from './planet.component';
 const fetchPlanets = async ( key, page ) => {
 
     // use the fetch API to grab the data from the Star Wars API
-    const response = await fetch( `http://swapi.dev/api/planets/?page=${page}` );
+    const response = await fetch( `https://swapi.dev/api/planets/?page=${page}` );
 
     // convert the json data into JavaScript or a JavaScript object
     const data = response.json();
