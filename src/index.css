@@ -1,13 +1,433 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/*
+// 1 -
+// let's paste in the net ninja's css styles from the net ninja's GitHub repo and if
+// we go to the homepage and view the page it now looks a lot better so this is great
+// and everything is working as expected
+
+// and remember by placing the styles in the index.css file we are in essence wrapping the app
+// in the styles below
+
+// and in the next lesson we will start using react query
+*/
+
+html {
+    font-size : 62.50%;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+    margin : 0 0 0 0;
+
+    font-family : 'Open Sans', Arial, sans-serif;
+    color       : rgba( 221, 221, 221, 1 );
+    text-align  : center;
+}
+
+.wrapper {
+    width  : 100vw; /* prevents the white flash on page load */
+    height : 100vh; /* prevents the white flash on page load */
+
+    /* background : rgba( 34, 34, 34, 1 ); */
+
+    /* create an overlay by doing the following */
+    background-image      : linear-gradient( to right, rgba( 16, 29, 44, 0.93 ), rgba( 16, 29, 44, 0.93 ) ), url( ./assets/star_wars_01.jpeg );
+    background-position   : center; 
+    background-size       : cover;
+    background-blend-mode : multiply;
+
+    overflow-y : scroll; /* made sure the background image is always present */
+}
+
+.app {
+    max-width  : 960px;
+    margin     : 0 auto;
+}
+
+h1 {
+    margin  : 0 0 36px 0;
+    padding : 36px 0 0 0;
+
+    font-size      : 6rem;
+    color          : rgba( 255, 255, 87, 1 );
+    letter-spacing : 2px;
+
+}
+
+h2 {
+    margin : 24px 0 30px 0;
+    padding : 24px 0 0 0;
+
+    font-size      : 3.0rem;
+    color          : rgba( 135,206,250, 1 );
+    letter-spacing : 1px;
+}
+
+h3, p {
+    font-size : 2.0rem;
+}
+
+nav > button {
+    margin  : 0 10px 0 10px;
+    padding : 10px 10px 10px 0;
+
+    border        : none;
+    border-radius : 15px;
+    /* border        : 3px solid rgba( 204, 204, 204, 1 ); */
+    /* border-radius : 15px; */
+
+    font-size : 2.2rem;
+    color     : rgba( 204, 204, 204, 1 );
+
+    background : transparent;
+
+    cursor  : pointer;
+    outline : none;
+
+    transition : all 0.2s ease-out;
+}
+
+nav > button:nth-child( 1 ) {
+    margin  : 0 10px 0 0;
+}
+
+nav > button:hover {
+    color     : rgba( 204, 204, 204, 1 );  
+
+    background-color : rgba( 255, 255, 255, 0.05 );
+
+    /* move the background color up just a little to add a nice hoover effect */
+    transform: translate3d( 0, -2px, 0); 
+}
+
+
+button {
+    margin  : 0 10px 0 10px;
+    padding : 12px 12px 12px 12px;
+
+    border        : 2px solid rgba( 204, 204, 204, 1 );
+    border-radius : 15px;
+
+    font-size : 2.0rem;
+    color     : rgba( 204, 204, 204, 1 );
+
+    background : transparent;
+
+    cursor  : pointer;
+    outline : none;
+}
+
+button:nth-child( 1 ) {
+    margin  : 0 10px 0 0;
+}
+
+button:hover {
+    border-color : rgba( 255, 255, 255, 1 );
+
+    color : rgba( 255, 255, 255, 1 );
+
+    transition : all 0.3s ease;
+}
+
+/*
+// 3 -
+// coming from the planets.component.jsx file 11 -
+// let's add a style for when the button becomes disabled or button:disabled{} and this
+// did not work for me so I left this style change out and now let's go back to the
+// planets.component.jsx file 11 -
+*/
+
+
+/*
+// End of 3 -
+*/
+
+.app--content {
+    text-align : left;
+}
+
+.app--content span {
+    margin : 0 4px 0 4px;
+
+    font-size  : 2.0rem;
+}
+
+/*
+// End of 1 -
+*/
+
+
+/*
+// 2 -
+// coming from the planets.component.jsx file 7 - and coming from the person.component.jsx
+// file 2 -
+// let's style the Planet component and the Person component
+*/
+
+.card {
+    margin  : 16px 0 16px 0;
+    padding : 8px 16px 8px 0;
+
+    border-radius : 20px;
+
+    /* background : rgba( 27, 27, 27, 0.4 ); */
+}
+
+.card > h3 {
+    margin : 10px 0 10px 0;
+
+    color : rgba( 255, 255, 87, 1 );
+}
+
+.card > p {
+    margin : 6px 0 6px 0;
+
+    color : rgba( 153, 153, 153, 1 );
+}
+
+/*
+// let's go back to the planets.component.jsx file 8 -
+// End of 2 -
+*/
+
+/* 1617px image display settings */
+@media only screen and ( max-width : 1617px ) {
+    html {
+        font-size : 62.50%;
+    }
+
+    body {
+        /* needed to use max-width in order for the layout to work correctly */
+        /* by using a fixed width, the image would overflow on one side of the page */
+        /* after page load and overflow-x: hidden did not correct the problem */
+        max-width : 1617px;
+
+        background-image      : linear-gradient( to right, rgba( 16, 29, 44, 0.93 ), rgba( 16, 29, 44, 0.93 ) ), url( ./assets/star_wars_01_1617.jpg );
+        background-position   : center;
+        background-size       : cover;
+        background-blend-mode : multiply;
+    }
+}
+
+
+/* 1383px image display settings */
+@media only screen and ( max-width : 1383px ) {
+    html {
+        font-size : 62.50%;
+    }
+
+    .wrapper {
+        /* needed to use max-width in order for the layout to work correctly */
+        /* by using a fixed width, the image would overflow on one side of the page */
+        /* after page load and overflow-x: hidden did not correct the problem */
+        max-width : 1383px;
+
+        font-size : 50%;
+
+        background-image      : linear-gradient( to right, rgba( 16, 29, 44, 0.93 ), rgba( 16, 29, 44, 0.93 ) ), url( ./assets/star_wars_01_1383.jpg );
+        background-position   : center;
+        background-size       : cover;
+        background-blend-mode : multiply;
+    }
+}
+
+
+/* 1024px image display settings */
+@media only screen and ( max-width : 1024px ) {
+    html {
+        font-size : 50.00%;
+    }
+
+    .wrapper {
+        /* needed to use max-width in order for the layout to work correctly */
+        /* by using a fixed width, the image would overflow on one side of the page */
+        /* after page load and overflow-x: hidden did not correct the problem */
+        max-width : 1024px;
+
+        font-size : 50%;
+
+        background-image      : linear-gradient( to right, rgba( 16, 29, 44, 0.93 ), rgba( 16, 29, 44, 0.93 ) ), url( ./assets/star_wars_01_1024.jpg );
+        background-position   : center;
+        background-size       : cover;
+        background-blend-mode : multiply;
+    }
+
+    .app {
+        max-width  : 90%;
+        margin     : 0 auto;
+    }
+}
+
+
+/* 920px image display settings */
+@media only screen and ( max-width : 920px ) {
+    html {
+        font-size : 50.00%;
+    }
+
+    .wrapper {
+        /* needed to use max-width in order for the layout to work correctly */
+        /* by using a fixed width, the image would overflow on one side of the page */
+        /* after page load and overflow-x: hidden did not correct the problem */
+        max-width : 920px;
+
+        font-size : 50%;
+
+        background-image      : linear-gradient( to right, rgba( 16, 29, 44, 0.93 ), rgba( 16, 29, 44, 0.93 ) ), url( ./assets/star_wars_01_920.jpg );
+        background-position   : center;
+        background-size       : cover;
+        background-blend-mode : multiply;
+    }
+}
+
+
+/* 768px image display settings */
+@media only screen and ( max-width : 768px ) {
+    html {
+        font-size : 50.00%;
+    }
+
+    .wrapper {
+        /* needed to use max-width in order for the layout to work correctly */
+        /* by using a fixed width, the image would overflow on one side of the page */
+        /* after page load and overflow-x: hidden did not correct the problem */
+        max-width : 768px;
+
+        font-size : 50%;
+
+        background-image      : linear-gradient( to right, rgba( 16, 29, 44, 0.93 ), rgba( 16, 29, 44, 0.93 ) ), url( ./assets/star_wars_01_768.jpg );
+        background-position   : center;
+        background-size       : cover;
+        background-blend-mode : multiply;
+    }
+}
+
+
+/* 620px image display settings */
+@media only screen and ( max-width : 620px ) {
+    html {
+        font-size : 50.00%;
+    }
+
+    .wrapper {
+        /* needed to use max-width in order for the layout to work correctly */
+        /* by using a fixed width, the image would overflow on one side of the page */
+        /* after page load and overflow-x: hidden did not correct the problem */
+        max-width : 620px;
+
+        font-size : 50%;
+
+        background-image      : linear-gradient( to right, rgba( 16, 29, 44, 0.93 ), rgba( 16, 29, 44, 0.93 ) ), url( ./assets/star_wars_01_620.jpg );
+        background-position   : center;
+        background-size       : cover;
+        background-blend-mode : multiply;
+    }
+
+    h1 {
+        margin : 48px 0 48px 0;
+    }
+
+    h2 {
+        margin : 48px 0 30px 0;
+        padding : 36px 0 0 0;
+
+        border-top : 1px solid rgba( 255, 255, 255, 0.35 );
+    }
+}
+
+
+/* 480px image display settings */
+@media only screen and ( max-width : 480px ) {
+    html {
+        font-size : 50.00%;
+    }
+
+    .wrapper {
+        /* needed to use max-width in order for the layout to work correctly */
+        /* by using a fixed width, the image would overflow on one side of the page */
+        /* after page load and overflow-x: hidden did not correct the problem */
+        max-width : 480px;
+
+        font-size : 50%;
+
+        background-image      : linear-gradient( to right, rgba( 16, 29, 44, 0.93 ), rgba( 16, 29, 44, 0.93 ) ), url( ./assets/star_wars_01_480.jpg );
+        background-position   : center;
+        background-size       : cover;
+        background-blend-mode : multiply;
+    }
+
+    h1 {
+        margin : 48px 0 48px 0;
+    }
+
+    h2 {
+        margin : 48px 0 30px 0;
+        padding : 36px 0 0 0;
+
+        border-top : 1px solid rgba( 255, 255, 255, 0.35 );
+    }
+}
+
+
+/* 375px image display settings */
+@media only screen and ( max-width : 375px ) {
+    html {
+        font-size : 50.00%;
+    }
+
+    .wrapper {
+        /* needed to use max-width in order for the layout to work correctly */
+        /* by using a fixed width, the image would overflow on one side of the page */
+        /* after page load and overflow-x: hidden did not correct the problem */
+        max-width : 375px;
+
+        font-size : 50%;
+
+        background-image      : linear-gradient( to right, rgba( 16, 29, 44, 0.93 ), rgba( 16, 29, 44, 0.93 ) ), url( ./assets/star_wars_01_375.jpg );
+        background-position   : center;
+        background-size       : cover;
+        background-blend-mode : multiply;
+    }
+
+    h1 {
+        margin : 48px 0 48px 0;
+    }
+
+    h2 {
+        margin : 48px 0 30px 0;
+        padding : 36px 0 0 0;
+
+        border-top : 1px solid rgba( 255, 255, 255, 0.35 );
+    }
+}
+
+
+/* 320px image display settings */
+@media only screen and ( max-width : 320px ) {
+    html {
+        font-size : 50.00%;
+    }
+
+    .wrapper {
+        /* needed to use max-width in order for the layout to work correctly */
+        /* by using a fixed width, the image would overflow on one side of the page */
+        /* after page load and overflow-x: hidden did not correct the problem */
+        max-width : 320px;
+
+        font-size : 50%;
+
+        background-image      : linear-gradient( to right, rgba( 16, 29, 44, 0.93 ), rgba( 16, 29, 44, 0.93 ) ), url( ./assets/star_wars_01_320.jpg );
+        background-position   : center;
+        background-size       : cover;
+        background-blend-mode : multiply;
+    }
+
+    h1 {
+        margin : 48px 0 48px 0;
+    }
+
+    h2 {
+        margin : 48px 0 30px 0;
+        padding : 36px 0 0 0;
+
+        border-top : 1px solid rgba( 255, 255, 255, 0.35 );
+    }
 }
